@@ -52,7 +52,6 @@ def part_1(file_path: str) -> int:
     with open(file_path, 'r') as f:
         sum = 0
         for line in f.readlines():
-            theirs = points_their_shapes[line[0]]
             mine = points_my_shapes[line[2]]
             sum += mine
             sum += calculate_outcome_points(line[0], line[2])
