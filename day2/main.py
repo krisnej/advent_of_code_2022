@@ -34,22 +34,24 @@ def calculate_outcome_points(their_shape: str, my_shape: str) -> int:
     my = my_shape_str[my_shape]
     if their == my:
         return 3
-    elif their == 'Rock' and my == 'Scissor':
+    elif their == "Rock" and my == "Scissor":
         return 0
-    elif their == 'Rock' and my == 'Paper':
+    elif their == "Rock" and my == "Paper":
         return 6
-    elif their == 'Scissor' and my == 'Rock':
+    elif their == "Scissor" and my == "Rock":
         return 6
-    elif their == 'Scissor' and my == 'Paper':
+    elif their == "Scissor" and my == "Paper":
         return 0
-    elif their == 'Paper' and my == 'Rock':
+    elif their == "Paper" and my == "Rock":
         return 0
-    elif their == 'Paper' and my == 'Scissor':
+    elif their == "Paper" and my == "Scissor":
         return 6
+    else:
+        raise Exception("Something went wrong calculating the outcome points...")
 
 
 def part_1(file_path: str) -> int:
-    with open(file_path, 'r') as f:
+    with open(file_path, "r") as f:
         sum = 0
         for line in f.readlines():
             mine = points_my_shapes[line[2]]
@@ -64,22 +66,22 @@ def choose_shape(theirs: str, outcome: int) -> str:
         return theirs
     elif outcome == 0:  # loose
         return {
-            'A': 'C',
-            'B': 'A',
-            'C': 'B',
+            "A": "C",
+            "B": "A",
+            "C": "B",
         }[theirs]
     elif outcome == 6:  # win
         return {
-            'A': 'B',
-            'B': 'C',
-            'C': 'A',
+            "A": "B",
+            "B": "C",
+            "C": "A",
         }[theirs]
     else:
-        raise Exception('Invalid outcome.')
+        raise Exception("Invalid outcome.")
 
 
 def part_2(file_path: str) -> int:
-    with open(file_path, 'r') as f:
+    with open(file_path, "r") as f:
         sum = 0
         for line in f.readlines():
             outcome_points = outcome[line[2]]
@@ -92,6 +94,6 @@ def part_2(file_path: str) -> int:
         return sum
 
 
-if __name__ == '__main__':
-    print(part_1('input.txt'))
-    print(part_2('input.txt'))
+if __name__ == "__main__":
+    print(part_1("input.txt"))
+    print(part_2("input.txt"))
